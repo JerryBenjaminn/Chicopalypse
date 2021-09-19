@@ -9,6 +9,8 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private Rigidbody2D rb; // Luodaan scriptiin Rididbodylle muuttuja, jotta sitä voidaan kutsua
     private bool facingRight = true; // Luodaan boolean muuttuja, jotta pelaajan suunta voidaan varmentaa
     [SerializeField] private float moveDirection; //Luodaan muuttuja, jotta voidaan luoda peliin controllit
+    [SerializeField] private float jumpForce = 1f;
+    [SerializeField] private float jumpInterval;
 
 
     private void Awake() //Poistetaan Start()-metodi ja luodaan sen tilanne Awake()-metodi. Awake metodia kutsutaan nopeammin, kuin Start-metodia ja se nopeuttaa pelin aloítusta
@@ -21,5 +23,11 @@ public class PlayerMovement : MonoBehaviour
     {
         moveDirection = Input.GetAxis("Horizontal"); //Sijoitetaan  x-koordinaatin liikkuvuus tiettyyn näppäimeen
         rb.velocity = new Vector2(moveDirection * movementSpeed, rb.velocity.y);
+
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            rb.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
+        }
+        
     }
 }
