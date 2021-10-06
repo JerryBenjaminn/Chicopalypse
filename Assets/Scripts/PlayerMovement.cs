@@ -10,7 +10,10 @@ public class PlayerMovement : MonoBehaviour
     private bool facingRight = true; // Luodaan boolean muuttuja, jotta pelaajan suunta voidaan varmentaa
     [SerializeField] private float moveDirection; //Luodaan muuttuja, jotta voidaan luoda peliin controllit
     [SerializeField] private float jumpForce = 1f;
+
+    [SerializeField] private bool isGrounded = true;
     [SerializeField] private float jumpInterval;
+    
 
 
     private void Awake() //Poistetaan Start()-metodi ja luodaan sen tilanne Awake()-metodi. Awake metodia kutsutaan nopeammin, kuin Start-metodia ja se nopeuttaa pelin aloítusta
